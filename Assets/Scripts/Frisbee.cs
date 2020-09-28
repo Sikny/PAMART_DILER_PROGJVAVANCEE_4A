@@ -5,11 +5,10 @@ public class Frisbee : MonoBehaviour {
     private float _force;
     
     private void Update() {
-        Vector3 pos = transform.position;
-        Vector3 dest = pos;
-        dest.x += _direction.x;
-        dest.y += _direction.y;
-        transform.position = Vector3.MoveTowards(pos, dest, _force * Time.deltaTime);
+        Vector2 pos = transform.position;
+        Vector2 dest = pos;
+        dest += _direction;
+        transform.position = Vector2.MoveTowards(pos, dest, _force * Time.deltaTime);
         
         if (Input.GetKeyDown(KeyCode.A)) {
             Move(new Vector2(1, 1), 15);
