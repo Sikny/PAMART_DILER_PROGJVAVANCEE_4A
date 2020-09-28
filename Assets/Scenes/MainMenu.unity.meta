@@ -1,7 +1,17 @@
+<<<<<<< HEAD:Assets/Scenes/GameScene.unity.meta
 fileFormatVersion: 2
-guid: 056c8527a87ee704b9f4218b0bd3843a
+guid: d7a718808e3feae4582c1deaa11d44b2
 DefaultImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+=======
+fileFormatVersion: 2
+guid: 9fc0d4010bbf28b4594072e72b8655ab
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> origin/master:Assets/Scenes/MainMenu.unity.meta
