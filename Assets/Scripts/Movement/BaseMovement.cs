@@ -10,50 +10,119 @@ public class BaseMovement : MonoBehaviour
 
     private float _initialSpeed;
     private bool _isDashing;
+    private bool _inDashCooldown; 
+    
+    private bool _isMovingRight;
+    private bool _isMovingLeft;
+    private bool _isMovingUp;
+    private bool _isMovingDown;
 
-    public void MoveUp()
+    private int xAxis = 0;
+    private int yAxis = 0;
+
+    private int xAxisStartDash = 0;
+    private int yAxisStartDash = 0;
+    private void Update()
     {
-        Vector2 pos = transform.position;
-        Vector2 dest = new Vector2(pos.x, pos.y + 0.1f);
-        transform.position = Vector2.MoveTowards(pos, dest, speed * Time.deltaTime);
+        if (_isDashing)
+        {
+            DoDash();
+            return;
+        }
+
+        if (xAxis == 1) //moving right
+        {
+            Vector2 pos = transform.position;
+            Vector2 dest = new Vector2(pos.x + 0.1f, pos.y);
+            transform.position = Vector2.MoveTowards(pos, dest, speed * Time.deltaTime);
+        }
+
+        if (xAxis == -1) //moving left
+        {
+            Vector2 pos = transform.position;
+            Vector2 dest = new Vector2(pos.x - 0.1f, pos.y);
+            transform.position = Vector2.MoveTowards(pos, dest,  speed * Time.deltaTime);
+        }
+
+        if (yAxis == 1)
+        {
+            Vector2 pos = transform.position;
+            Vector2 dest = new Vector2(pos.x, pos.y + 0.1f);
+            transform.position = Vector2.MoveTowards(pos, dest,  speed * Time.deltaTime);
+        }
+        if (yAxis == -1)
+        {
+            Vector2 pos = transform.position;
+            Vector2 dest = new Vector2(pos.x, pos.y - 0.1f);
+            transform.position = Vector2.MoveTowards(pos, dest,  speed * Time.deltaTime);
+        }
+
+    }
+    public void SetMoveRight()
+    {
+        
+        xAxis += 1;
+    }
+    public void SetMoveLeft()
+    {
+        xAxis -= 1;
     }
 
-    public void MoveDown()
+    public void SetMoveUp()
     {
-        Vector2 pos = transform.position;
-        Vector2 dest = new Vector2(pos.x, pos.y - 0.1f);
-        transform.position = Vector2.MoveTowards(pos, dest, speed * Time.deltaTime);
+        yAxis += 1;
+    }
+    public void SetMoveDown()
+    {
+        yAxis -= 1;
+    }
+    public void UnsetMoveRight()
+    {
+        xAxis -= 1;
     }
 
-    public void MoveRight()
+    public void UnsetMoveLeft()
     {
-        Vector2 pos = transform.position;
-        Vector2 dest = new Vector2(pos.x + 0.1f, pos.y);
-        transform.position = Vector2.MoveTowards(pos, dest, speed * Time.deltaTime);
+        xAxis += 1;
     }
 
-    public void MoveLeft()
+    public void UnsetMoveUp()
     {
-        Vector2 pos = transform.position;
-        Vector2 dest = new Vector2(pos.x - 0.1f, pos.y);
-        transform.position = Vector2.MoveTowards(pos, dest, speed * Time.deltaTime);
+        yAxis += -1;
     }
-
+    
+    public void UnsetMoveDown()
+    {
+        yAxis -= -1;
+    }
     public void Dash()
     {
+
         if (_isDashing) return;
+        xAxisStartDash = xAxis;
+        yAxisStartDash = yAxis;
         _isDashing = true;
-        StartCoroutine(StartDash(0.5f));
+        StartCoroutine(StartDash(0.3f));
 
     }
 
-    public IEnumerator StartDash(float dashLength)
+    private void DoDash()
+    {
+        Vector2 dest = new Vector2(transform.position.x + xAxisStartDash, transform.position.y + yAxisStartDash);
+        transform.position = Vector2.MoveTowards(transform.position, dest,  speed * 4 *  Time.deltaTime);
+    }
+
+    private IEnumerator StartDash(float dashLength)
     {
         _initialSpeed = speed;
-        speed *= 50;
         yield return new WaitForSeconds(dashLength);
-        speed = _initialSpeed;
         _isDashing = false;
 
+
+    }
+
+    public bool GetIsDashing()
+    {
+        return _isDashing;
     }
 }
