@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6355969266950478193}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 8567492617792150594}
   - component: {fileID: 4906872354528297446}
   - component: {fileID: 8731564886086592811}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 6618783126880785191}
   - component: {fileID: 4894151274327968176}
   - component: {fileID: 1282776250944881459}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Frisbee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
