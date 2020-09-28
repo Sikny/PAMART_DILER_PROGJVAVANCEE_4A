@@ -8,8 +8,12 @@ public class Frisbee : MonoBehaviour {
         Vector3 pos = transform.position;
         Vector3 dest = pos;
         dest.x += _direction.x;
-        dest.z += _direction.y;
+        dest.y += _direction.y;
         transform.position = Vector3.MoveTowards(pos, dest, _force * Time.deltaTime);
+        
+        if (Input.GetKeyDown(KeyCode.A)) {
+            Move(new Vector2(1, 1), 15);
+        }
     }
 
     public void Move(Vector2 direction, float force) {
