@@ -34,7 +34,12 @@ public class PlayerController : MonoBehaviour
         // Dash
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            baseMovement.Dash();
+            if (!baseMovement.Frisbee)
+                baseMovement.Dash();
+            else
+            {
+                Debug.Log("throw");
+            }
         }
 
     }

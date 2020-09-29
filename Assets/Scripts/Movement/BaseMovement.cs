@@ -22,6 +22,7 @@ public class BaseMovement : MonoBehaviour {
     private int _xAxisStartDash;
     private int _yAxisStartDash;
     private bool _lockMove;
+    private Frisbee _frisbee;
 
     private void Update() {
         if (_isDashing) {
@@ -48,6 +49,15 @@ public class BaseMovement : MonoBehaviour {
         _yAxis = _lockMove ? 0 : direction;
     }
 
+
+    public Frisbee Frisbee
+    {
+        get => _frisbee;
+        set => _frisbee = value;
+    }
+
+   
+
     private Vector2 _dashDest;
     public void Dash() {
         if (_isDashing) return;
@@ -69,6 +79,12 @@ public class BaseMovement : MonoBehaviour {
         }
     }
 
+    private void ThrowFrisbee()
+    {
+        _frisbee.SetIsCaught(false);
+        //TODO get direction and throw firsbee at angle
+        
+    }
     public void LockMove() {
         _lockMove = true;
     }

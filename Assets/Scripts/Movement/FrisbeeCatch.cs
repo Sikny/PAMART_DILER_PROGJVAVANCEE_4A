@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class FrisbeeCatch : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+    public BaseMovement baseMovement;
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Frisbee"))
         {
-            Debug.Log("hit character");
-            // Todo add score to player
+            Frisbee frisbee = other.gameObject.GetComponent<Frisbee>();
+            frisbee.SetPlayerPos(baseMovement.transform);
+            frisbee.SetIsCaught(true);
+            baseMovement.Frisbee = frisbee;
+            baseMovement.LockMove();
+            
         }
     }
 }
