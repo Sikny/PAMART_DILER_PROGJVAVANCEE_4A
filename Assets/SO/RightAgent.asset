@@ -12,3 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc9798b6894b904aab475b5583d3366, type: 3}
   m_Name: RightAgent
   m_EditorClassIdentifier: 
+  agentPrefab: {fileID: 4261700638883636255, guid: 8a6c17708a6cf254d884dfa156aec41f,
+    type: 3}
+  right: 275
+  left: 276
+  up: 273
+  down: 274
+  dash: 256

@@ -79,13 +79,8 @@ public class BaseMovement : MonoBehaviour {
     {
         _frisbee.SetIsCaught(false);
 
-        Vector2 direction;
-        if(directionHeld == 1)
-            direction = new Vector2(1, 1);
-        else if(directionHeld == -1)
-            direction = new Vector2(1, -1);
-        else // 0
-            direction = new Vector2(1, 0);
+        float xDir = _frisbee.transform.position.x - transform.position.x > 0 ? 1 : -1; 
+        Vector2 direction = new Vector2(xDir, directionHeld);
         
         _frisbee.Move(direction,15);
         _frisbee = null;
