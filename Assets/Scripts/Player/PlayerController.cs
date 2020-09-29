@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,45 +9,29 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
     
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            baseMovement.SetMoveRight();
+        // Lateral
+        if (Input.GetKey(KeyCode.RightArrow)) {
+            baseMovement.SetLateralMove(1);
         }
-
-        if (Input.GetKeyUp(KeyCode.RightArrow))
-        {
-            baseMovement.UnsetMoveRight();
+        else if(Input.GetKey(KeyCode.LeftArrow)) {
+            baseMovement.SetLateralMove(-1);
         }
-        
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            baseMovement.SetMoveLeft();
+        else {
+            baseMovement.SetLateralMove(0);
         }
         
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        // Vertical
+        if (Input.GetKey(KeyCode.UpArrow))
         {
-            baseMovement.UnsetMoveLeft();
+            baseMovement.SetVerticalMove(1);
+        } else if (Input.GetKey(KeyCode.DownArrow)) {
+            baseMovement.SetVerticalMove(-1);
+        }
+        else {
+            baseMovement.SetVerticalMove(0);
         }
         
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            baseMovement.SetMoveUp();
-        }
-        
-        if (Input.GetKeyUp(KeyCode.UpArrow))
-        {
-            baseMovement.UnsetMoveUp();
-        }
-        
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            baseMovement.SetMoveDown();
-        }
-        
-        if (Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            baseMovement.UnsetMoveDown();
-        }
+        // Dash
         if (Input.GetKeyDown(KeyCode.Space))
         {
             baseMovement.Dash();
