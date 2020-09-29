@@ -11,5 +11,6 @@ public class PlayerScore {
     public void AddPoint(int value) {
         _score += value;
         _txtScore.text = _score.ToString();
+        if(_score >= 12) GameManager.Instance.EndGame();
     }
 }
