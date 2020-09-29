@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentPrefab: {fileID: 4261700638883636255, guid: 8a6c17708a6cf254d884dfa156aec41f,
     type: 3}
+  xFrisbeeOffset: -1
   right: 275
   left: 276
   up: 273

@@ -5,6 +5,7 @@ public class BaseMovement : MonoBehaviour {
     public float dashDistance = 5f;
     public float dashSpeed = 6f;
 
+    [HideInInspector] public float offsetFrisbee;
     public CircleCollider2D selfCollider;
         
     private bool _isDashing;
@@ -55,6 +56,7 @@ public class BaseMovement : MonoBehaviour {
    
 
     private Vector2 _dashDest;
+
     public void Dash() {
         if (_isDashing) return;
 
@@ -79,7 +81,7 @@ public class BaseMovement : MonoBehaviour {
     {
         _frisbee.SetIsCaught(false);
 
-        float xDir = _frisbee.transform.position.x - transform.position.x > 0 ? 1 : -1; 
+        float xDir = _frisbee.transform.position.x - transform.position.x > 0 ? 1 : -1;
         Vector2 direction = new Vector2(xDir, directionHeld);
         
         _frisbee.Move(direction,15);

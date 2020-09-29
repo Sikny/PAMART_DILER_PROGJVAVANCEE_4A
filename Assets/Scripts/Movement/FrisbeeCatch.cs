@@ -8,6 +8,7 @@ public class FrisbeeCatch : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Frisbee"))
         {
             Frisbee frisbee = other.gameObject.GetComponent<Frisbee>();
+            frisbee.offsetToPlayer = baseMovement.offsetFrisbee;
             frisbee.SetPlayerPos(baseMovement.transform);
             frisbee.SetIsCaught(true);
             baseMovement.Frisbee = frisbee;
