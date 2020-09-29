@@ -54,28 +54,6 @@ public class PlayerController : MonoBehaviour
         {
             baseMovement.Dash();
         }
-        /*
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            baseMovement.MoveUp();
-        }
 
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            baseMovement.MoveDown();
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            baseMovement.MoveLeft();
-        }       
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            baseMovement.MoveRight();
-        }
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            baseMovement.Dash();
-        }*/
     }
 }
