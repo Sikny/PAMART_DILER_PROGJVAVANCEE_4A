@@ -295,6 +295,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 7044183731122560723}
+        m_MethodName: OnPauseButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1001 &7315181152386904257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -556,3 +567,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7800207268354591957}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7044183731122560723 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1008261950072115718, guid: 68cf0ebca824dea45aa535cce7ede59a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7800207268354591957}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3292899420440951668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a0b0507fd1549c4e8f0c32bafe27113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
