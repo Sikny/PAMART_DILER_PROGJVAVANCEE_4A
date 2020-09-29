@@ -6,6 +6,7 @@ using UnityEngine;
 public class BaseMovement : MonoBehaviour
 {
 
+    public PlayerCollision playerCollision;
     public float speed = 1.0f;
 
     private float _initialSpeed;
@@ -44,13 +45,13 @@ public class BaseMovement : MonoBehaviour
             transform.position = Vector2.MoveTowards(pos, dest,  speed * Time.deltaTime);
         }
 
-        if (yAxis == 1)
+        if (yAxis == 1) //moving up
         {
             Vector2 pos = transform.position;
             Vector2 dest = new Vector2(pos.x, pos.y + 0.1f);
             transform.position = Vector2.MoveTowards(pos, dest,  speed * Time.deltaTime);
         }
-        if (yAxis == -1)
+        if (yAxis == -1) //moving down
         {
             Vector2 pos = transform.position;
             Vector2 dest = new Vector2(pos.x, pos.y - 0.1f);
@@ -60,7 +61,6 @@ public class BaseMovement : MonoBehaviour
     }
     public void SetMoveRight()
     {
-        
         xAxis += 1;
     }
     public void SetMoveLeft()
@@ -102,14 +102,16 @@ public class BaseMovement : MonoBehaviour
         xAxisStartDash = xAxis;
         yAxisStartDash = yAxis;
         _isDashing = true;
-        StartCoroutine(StartDash(0.3f));
+        StartCoroutine(StartDash(0.15f));
 
     }
 
     private void DoDash()
     {
-        Vector2 dest = new Vector2(transform.position.x + xAxisStartDash, transform.position.y + yAxisStartDash);
-        transform.position = Vector2.MoveTowards(transform.position, dest,  speed * 4 *  Time.deltaTime);
+        var position = transform.position;
+        Vector2 dest = new Vector2(position.x + xAxisStartDash, position.y + yAxisStartDash);
+        position = Vector2.MoveTowards(position, dest,  speed * 6 *  Time.deltaTime);
+        transform.position = position;
     }
 
     private IEnumerator StartDash(float dashLength)
@@ -117,12 +119,18 @@ public class BaseMovement : MonoBehaviour
         _initialSpeed = speed;
         yield return new WaitForSeconds(dashLength);
         _isDashing = false;
-
-
     }
 
-    public bool GetIsDashing()
+
+    public int XAxis
     {
-        return _isDashing;
+        get => xAxis;
+        set => xAxis = value;
+    }
+
+    public int YAxis
+    {
+        get => yAxis;
+        set => yAxis = value;
     }
 }

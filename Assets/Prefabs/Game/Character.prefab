@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 8872689943527430534}
   - component: {fileID: 2410101687294748438}
   - component: {fileID: 3570135598432519240}
-  m_Layer: 0
+  - component: {fileID: 5119204075205642969}
+  - component: {fileID: 4550598715631195169}
+  m_Layer: 8
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,6 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f17df3d05b6b18845a8d84881b515a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCollision: {fileID: 4550598715631195169}
   speed: 5
 --- !u!114 &3570135598432519240
 MonoBehaviour:
@@ -81,6 +84,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMovement: {fileID: 2410101687294748438}
+--- !u!114 &5119204075205642969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4261700638883636255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a265e20973d87345807e895b7f6e99b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4550598715631195169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4261700638883636255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3444f45c1bb31419c7a77d1abfaf69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circleCollider: {fileID: 4093940730829087150}
+  baseMovement: {fileID: 2410101687294748438}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &4843766114023085991
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +125,7 @@ GameObject:
   - component: {fileID: 8906150123274921506}
   - component: {fileID: 5845143629471661689}
   - component: {fileID: 4093940730829087150}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,9 +206,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -1838468}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.75
 --- !u!1 &7917603909549936075
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5523161620750285542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7917603909549936075}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8395113638447958051}
