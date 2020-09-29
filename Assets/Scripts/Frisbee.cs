@@ -14,6 +14,7 @@ public class Frisbee : MonoBehaviour
         if (_isCaught)
         {
             SetPosition();
+            _isCaught = false;
             return;
         }
         Vector2 pos = transform.position;
@@ -44,9 +45,12 @@ public class Frisbee : MonoBehaviour
 
     public void SetPosition()
     {
-        Vector2 newPosition = new Vector2(_playerPosition.position.x + offsetToPlayer,
-            _playerPosition.position.y);
-        //transform.position = Vector2.MoveTowards(transform.position, newPosition, _force * Time.deltaTime);
+        _isCaught = false;
+
+        Vector2 newPosition = new Vector2(_playerPosition.position.x + offsetToPlayer, _playerPosition.position.y);
+        
+        transform.position = newPosition;
+
         Move(newPosition, 0);
     }
     private const float Tolerance = 0.1f;

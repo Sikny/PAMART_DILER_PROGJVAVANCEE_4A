@@ -11,11 +11,7 @@ public class BaseMovement : MonoBehaviour {
 
     private bool _inDashCooldown;
 
-    private bool _isMovingRight;
-    private bool _isMovingLeft;
-    private bool _isMovingUp;
-    private bool _isMovingDown;
-
+ 
     private int _xAxis;
     private int _yAxis;
 
@@ -79,11 +75,14 @@ public class BaseMovement : MonoBehaviour {
         }
     }
 
-    private void ThrowFrisbee()
+    public void ThrowFrisbee(int directionHeld) //1 = up, -1 = down, 0 = neutral
     {
         _frisbee.SetIsCaught(false);
+        _frisbee.Move(new Vector2(1,1),15);
+        _frisbee = null;
+        _lockMove = false;
         //TODO get direction and throw firsbee at angle
-        
+
     }
     public void LockMove() {
         _lockMove = true;
