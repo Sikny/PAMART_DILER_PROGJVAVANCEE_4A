@@ -73,7 +73,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3636827286761047815}
   - component: {fileID: 1682145686439670129}
-  m_Layer: 0
+  - component: {fileID: 4162738757217941492}
+  m_Layer: 12
   m_Name: Net
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,6 +145,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &4162738757217941492
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3608967368172523419}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &4643439822598278743
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,8 +407,6 @@ MonoBehaviour:
   - {fileID: 2546157819138540601}
   - {fileID: 6973727775394957665}
   - {fileID: 7450950937714639053}
-  agentPrefabs:
-  - {fileID: 4261700638883636255, guid: 8a6c17708a6cf254d884dfa156aec41f, type: 3}
   rightAgent: {fileID: 11400000, guid: f68de1f81268e18428ee539076f5dcc9, type: 2}
   leftAgent: {fileID: 11400000, guid: 03dccb264e9635c488008b060377711e, type: 2}
   lSpawn: {fileID: 9073022437203153868}

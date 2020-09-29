@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3570135598432519240}
   - component: {fileID: 5119204075205642969}
   m_Layer: 8
-  m_Name: Character
+  m_Name: PlayerCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,11 @@ MonoBehaviour:
   speed: 5
   dashDistance: 3
   dashSpeed: 4
+  offsetFrisbee: 0
   selfCollider: {fileID: 4093940730829087150}
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 5120
 --- !u!114 &3570135598432519240
 MonoBehaviour:
   m_ObjectHideFlags: 0

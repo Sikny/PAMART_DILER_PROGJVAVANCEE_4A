@@ -7,6 +7,7 @@ public class BaseMovement : MonoBehaviour {
 
     [HideInInspector] public float offsetFrisbee;
     public CircleCollider2D selfCollider;
+    public LayerMask collisionMask;
         
     private bool _isDashing;
 
@@ -33,7 +34,7 @@ public class BaseMovement : MonoBehaviour {
         Vector2 dest = new Vector2(pos.x + 0.1f * _xAxis, pos.y + 0.1f * _yAxis);
         transform.position = Vector2.MoveTowards(pos, dest, speed * Time.deltaTime);
         
-        if (Physics2D.OverlapCircle(transform.position, selfCollider.radius, 1 << LayerMask.NameToLayer("Wall"))) {
+        if (Physics2D.OverlapCircle(transform.position, selfCollider.radius, collisionMask)) {
             transform.position = pos;
         }
     }
