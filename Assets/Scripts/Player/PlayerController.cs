@@ -4,17 +4,31 @@ public class PlayerController : MonoBehaviour
 {
 
     public BaseMovement baseMovement;
-    private int _directionHeld = 0;
+    private int _directionHeld;
+
+    private KeyCode _rightKey;
+    private KeyCode _leftKey;
+    private KeyCode _upKey;
+    private KeyCode _downKey;
+    private KeyCode _dashKey;
+    
+    public void InitControls(KeyCode right, KeyCode left, KeyCode up, KeyCode down, KeyCode dash) {
+        _rightKey = right;
+        _leftKey = left;
+        _upKey = up;
+        _downKey = down;
+        _dashKey = dash;
+    }
+    
     // Update is called once per frame
     void Update()
     {
-    
         // Lateral
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(_rightKey))
         {
             baseMovement.SetLateralMove(1);
         }
-        else if(Input.GetKey(KeyCode.LeftArrow)) {
+        else if(Input.GetKey(_leftKey)) {
             baseMovement.SetLateralMove(-1);
         }
         else {
@@ -22,11 +36,11 @@ public class PlayerController : MonoBehaviour
         }
         
         // Vertical
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(_upKey))
         {
             baseMovement.SetVerticalMove(1);
             _directionHeld = 1;
-        } else if (Input.GetKey(KeyCode.DownArrow)) {
+        } else if (Input.GetKey(_downKey)) {
             baseMovement.SetVerticalMove(-1);
             _directionHeld = -1;
         }
@@ -36,13 +50,12 @@ public class PlayerController : MonoBehaviour
         }
         
         // Dash
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(_dashKey))
         {
             if (!baseMovement.Frisbee)
                 baseMovement.Dash();
             else
             {
-                Debug.Log("direction : " + _directionHeld);
                 baseMovement.ThrowFrisbee(_directionHeld);
             }
         }

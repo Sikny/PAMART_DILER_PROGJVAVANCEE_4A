@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     private static GameManager _instance;
     public static GameManager Instance => _instance;
-    
+
     [HideInInspector] public Timer timer;
 
     private void Awake() {
