@@ -33,9 +33,12 @@ public class Stadium : MonoBehaviour {
         GameObject player1 = Instantiate(rightAgent.agentPrefab, rSpawn.position, Quaternion.identity);
         PlayerController controller = player1.GetComponent<PlayerController>();
         if(controller != null) MapPlayer(rightAgent, controller);
+        player1.GetComponent<BaseMovement>().offsetFrisbee = rightAgent.xFrisbeeOffset;
+
         GameObject player2 = Instantiate(leftAgent.agentPrefab, lSpawn.position, Quaternion.identity);
         controller = player2.GetComponent<PlayerController>();
         if(controller != null) MapPlayer(leftAgent, controller);
+        player2.GetComponent<BaseMovement>().offsetFrisbee = leftAgent.xFrisbeeOffset;
     }
 
     private void MapPlayer(SelectedAgent agent, PlayerController controller) {

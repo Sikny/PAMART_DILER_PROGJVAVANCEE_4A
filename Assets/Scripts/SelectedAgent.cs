@@ -5,6 +5,8 @@
 public class SelectedAgent : ScriptableObject {
     public GameObject agentPrefab;
 
+    public float xFrisbeeOffset;
+
     #region KeyMap
     [Header("Keymap")]
     public KeyCode right;
