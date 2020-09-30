@@ -15,4 +15,8 @@ public class SelectedAgent : ScriptableObject {
     public KeyCode down;
     public KeyCode dash;
     #endregion
+
+    public void SetAgent(int id) {
+        agentPrefab = GameManager.Instance.possibleAgents[id];
+    }
 }

@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour {
     private static GameManager _instance;
     public static GameManager Instance => _instance;
 
+    public List<GameObject> possibleAgents = new List<GameObject>();
+
     [HideInInspector] public Timer timer;
 
     private void Awake() {
