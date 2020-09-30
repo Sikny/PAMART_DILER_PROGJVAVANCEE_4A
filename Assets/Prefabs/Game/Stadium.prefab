@@ -411,6 +411,8 @@ MonoBehaviour:
   leftAgent: {fileID: 11400000, guid: 03dccb264e9635c488008b060377711e, type: 2}
   lSpawn: {fileID: 9073022437203153868}
   rSpawn: {fileID: 704502615247437154}
+  lPos: {fileID: 0}
+  rPos: {fileID: 0}
   rScore: {fileID: 0}
   lScore: {fileID: 0}
 --- !u!1001 &127548543313341399
@@ -420,6 +422,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2103744083683428915}
     m_Modifications:
+    - target: {fileID: 2490738751510769646, guid: e8225d3cda7a7f4409f10227dd2fff58,
+        type: 3}
+      propertyPath: stadium
+      value: 
+      objectReference: {fileID: 2162833528637486577}
     - target: {fileID: 4551666365931883572, guid: e8225d3cda7a7f4409f10227dd2fff58,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -495,6 +502,16 @@ PrefabInstance:
     - target: {fileID: 1164247587242789077, guid: e8225d3cda7a7f4409f10227dd2fff58,
         type: 3}
       propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490738751510769646, guid: e8225d3cda7a7f4409f10227dd2fff58,
+        type: 3}
+      propertyPath: stadium
+      value: 
+      objectReference: {fileID: 2162833528637486577}
+    - target: {fileID: 2490738751510769646, guid: e8225d3cda7a7f4409f10227dd2fff58,
+        type: 3}
+      propertyPath: isLeftSide
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4551666365931883572, guid: e8225d3cda7a7f4409f10227dd2fff58,
@@ -704,6 +721,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2279552738525699533, guid: 212143df22503fb4980a33e7f2b92c52,
+        type: 3}
+      propertyPath: stadium
+      value: 
+      objectReference: {fileID: 2162833528637486577}
+    - target: {fileID: 2279552738525699533, guid: 212143df22503fb4980a33e7f2b92c52,
+        type: 3}
+      propertyPath: isLeftSide
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5448851945950648094, guid: 212143df22503fb4980a33e7f2b92c52,
         type: 3}
       propertyPath: m_Name
@@ -790,6 +817,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279552738525699533, guid: 212143df22503fb4980a33e7f2b92c52,
+        type: 3}
+      propertyPath: stadium
+      value: 
+      objectReference: {fileID: 2162833528637486577}
+    - target: {fileID: 2279552738525699533, guid: 212143df22503fb4980a33e7f2b92c52,
+        type: 3}
+      propertyPath: isLeftSide
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5448851945950648094, guid: 212143df22503fb4980a33e7f2b92c52,
         type: 3}
@@ -1043,6 +1080,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2279552738525699533, guid: 212143df22503fb4980a33e7f2b92c52,
+        type: 3}
+      propertyPath: stadium
+      value: 
+      objectReference: {fileID: 2162833528637486577}
     - target: {fileID: 5448851945950648094, guid: 212143df22503fb4980a33e7f2b92c52,
         type: 3}
       propertyPath: m_Name
@@ -1130,6 +1172,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2279552738525699533, guid: 212143df22503fb4980a33e7f2b92c52,
+        type: 3}
+      propertyPath: stadium
+      value: 
+      objectReference: {fileID: 2162833528637486577}
     - target: {fileID: 5448851945950648094, guid: 212143df22503fb4980a33e7f2b92c52,
         type: 3}
       propertyPath: m_Name

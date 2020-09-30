@@ -68,9 +68,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f17df3d05b6b18845a8d84881b515a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  dashDistance: 3
-  dashSpeed: 4
+  speed: 7
+  dashDistance: 4
+  dashSpeed: 5
+  stadium: {fileID: 2162833528637486577, guid: 68ba4d61891587f43bd7e8d1b651ae2d, type: 3}
   offsetFrisbee: 0
   selfCollider: {fileID: 4093940730829087150}
   collisionMask:

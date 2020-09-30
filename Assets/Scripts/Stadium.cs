@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -8,9 +9,16 @@ public class Stadium : MonoBehaviour {
     
     public SelectedAgent rightAgent;
     public SelectedAgent leftAgent;
+    
     public Transform lSpawn;
     public Transform rSpawn;
 
+    public BaseMovement lPos;
+    public BaseMovement rPos;
+
+    [HideInInspector]
+    public bool isServing;
+    
     [HideInInspector] public TextMeshProUGUI rScore;
     [HideInInspector] public TextMeshProUGUI lScore;
     
@@ -36,6 +44,10 @@ public class Stadium : MonoBehaviour {
         player1.GetComponent<BaseMovement>().offsetFrisbee = rightAgent.xFrisbeeOffset;
 
         GameObject player2 = Instantiate(leftAgent.agentPrefab, lSpawn.position, Quaternion.identity);
+
+        rPos = player1.GetComponent<BaseMovement>();
+        lPos = player2.GetComponent<BaseMovement>();
+
         controller = player2.GetComponent<PlayerController>();
         if(controller != null) MapPlayer(leftAgent, controller);
         player2.GetComponent<BaseMovement>().offsetFrisbee = leftAgent.xFrisbeeOffset;

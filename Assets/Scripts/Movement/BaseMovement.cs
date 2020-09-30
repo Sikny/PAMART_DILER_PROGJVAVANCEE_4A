@@ -80,6 +80,7 @@ public class BaseMovement : MonoBehaviour {
 
     public void ThrowFrisbee(int directionHeld) //1 = up, -1 = down, 0 = neutral
     {
+            
         _frisbee.SetIsCaught(false);
 
         float xDir = _frisbee.transform.position.x - transform.position.x > 0 ? 1 : -1;
@@ -88,7 +89,6 @@ public class BaseMovement : MonoBehaviour {
         _frisbee.Move(direction,15);
         _frisbee = null;
         _lockMove = false;
-        //TODO get direction and throw firsbee at angle
 
     }
     public void LockMove() {

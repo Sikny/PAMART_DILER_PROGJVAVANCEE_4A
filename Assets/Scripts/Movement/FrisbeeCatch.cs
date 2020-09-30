@@ -13,7 +13,6 @@ public class FrisbeeCatch : MonoBehaviour
             frisbee.SetIsCaught(true);
             baseMovement.Frisbee = frisbee;
             baseMovement.LockMove();
-            
         }
     }
 }
