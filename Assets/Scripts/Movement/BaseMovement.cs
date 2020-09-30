@@ -72,7 +72,7 @@ public class BaseMovement : MonoBehaviour {
         //Vector2 dest = new Vector2(position.x + _xAxisStartDash, position.y + _yAxisStartDash);
         transform.position = Vector2.MoveTowards(position, _dashDest, speed * dashSpeed * Time.deltaTime);
         
-        if (Physics2D.OverlapCircle(transform.position, selfCollider.radius, 1 << LayerMask.NameToLayer("Wall"))) {
+        if (Physics2D.OverlapCircle(transform.position, selfCollider.radius, collisionMask)) {
             transform.position = position;
             _isDashing = false;
         }
