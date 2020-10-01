@@ -23,7 +23,7 @@ public class MCTS : MonoBehaviour {
     // une simulation = 1 win | lose
     private int SimulateResult(AgentAction possibleAction)
     {
-        while(!GameManager.Instance.IsFinished()) //Attention votre jeu doit être finit !
+        while(!GameManager.Instance.IsFinished) //Attention votre jeu doit être finit !
         {
             //List<AgentAction> actions = Game.GetNextPossibleAction(possibleAction);
             //AgentAction selectedAction = Game.GetRandomAction(actions);
