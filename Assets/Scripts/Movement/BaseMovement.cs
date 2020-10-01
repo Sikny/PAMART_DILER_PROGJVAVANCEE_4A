@@ -113,7 +113,7 @@ public class BaseMovement : MonoBehaviour {
         _frisbee = null;
         _throwForce = maxThrowForce;
         _lockMove = false;
-
+        GameManager.Instance.isServing = false;
     }
     public void LockMove() {
         _lockMove = true;

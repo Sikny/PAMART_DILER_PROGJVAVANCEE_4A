@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour {
     public List<GameObject> possibleAgents = new List<GameObject>();
 
     [HideInInspector] public Timer timer;
+    [HideInInspector] public bool isServing;
+    [HideInInspector] public BaseMovement lPos;
+    [HideInInspector] public BaseMovement rPos;
 
     private void Awake() {
         if (_instance != null) {

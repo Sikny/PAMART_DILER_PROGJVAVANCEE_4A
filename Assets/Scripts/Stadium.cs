@@ -13,9 +13,6 @@ public class Stadium : MonoBehaviour {
     public Transform lSpawn;
     public Transform rSpawn;
 
-    public BaseMovement lPos;
-    public BaseMovement rPos;
-
     [HideInInspector]
     public bool isServing;
     
@@ -45,9 +42,8 @@ public class Stadium : MonoBehaviour {
 
         GameObject player2 = Instantiate(leftAgent.agentPrefab, lSpawn.position, Quaternion.identity);
 
-        rPos = player1.GetComponent<BaseMovement>();
-        lPos = player2.GetComponent<BaseMovement>();
-
+        GameManager.Instance.rPos = player1.GetComponent<BaseMovement>();
+        GameManager.Instance.lPos = player2.GetComponent<BaseMovement>();
         controller = player2.GetComponent<PlayerController>();
         if(controller != null) MapPlayer(leftAgent, controller);
         player2.GetComponent<BaseMovement>().offsetFrisbee = leftAgent.xFrisbeeOffset;
