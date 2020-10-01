@@ -1,14 +1,18 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class BaseMovement : MonoBehaviour {
     public float speed = 1.0f;
     public float dashDistance = 5f;
     public float dashSpeed = 6f;
+    public float maxThrowForce = 30f;
+    public float forceDecrease = 10f;
+    public float minForce = 15f;
 
     [HideInInspector] public float offsetFrisbee;
     public CircleCollider2D selfCollider;
     public LayerMask collisionMask;
-        
+    
     private bool _isDashing;
 
     private bool _inDashCooldown;
@@ -21,8 +25,25 @@ public class BaseMovement : MonoBehaviour {
     private int _yAxisStartDash;
     private bool _lockMove;
     private Frisbee _frisbee;
+    private float _throwForce;
+
+
+    private void Start()
+    {
+        _throwForce = maxThrowForce;
+    }
 
     private void Update() {
+        if (_frisbee)
+        {
+            Debug.Log("Throw force is : " + _throwForce);
+            Debug.Log("decrease is : " + forceDecrease);
+            Debug.Log("minForce is : " + minForce);
+            //if(_throwForce > minForce)
+              //  _throwForce -= forceDecrease * Time.deltaTime;
+            return;
+            
+        }
         if (_isDashing) {
             DoDash();
             if (Vector3.Distance(transform.position, _dashDest) < 0.01f) _isDashing = false;
@@ -80,14 +101,14 @@ public class BaseMovement : MonoBehaviour {
 
     public void ThrowFrisbee(int directionHeld) //1 = up, -1 = down, 0 = neutral
     {
-            
         _frisbee.SetIsCaught(false);
 
         float xDir = _frisbee.transform.position.x - transform.position.x > 0 ? 1 : -1;
         Vector2 direction = new Vector2(xDir, directionHeld);
         
-        _frisbee.Move(direction,15);
+        _frisbee.Move(direction,_throwForce);
         _frisbee = null;
+        _throwForce = maxThrowForce;
         _lockMove = false;
 
     }
