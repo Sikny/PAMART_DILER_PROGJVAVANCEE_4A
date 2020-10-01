@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Movement;
+using UnityEngine;
 
 public class PlayerRandom : MonoBehaviour {
     public BaseMovement baseMovement;

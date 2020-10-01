@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Movement;
 using UnityEngine;
 
 namespace IA {
@@ -40,6 +41,7 @@ namespace IA {
         public abstract void PlayAction();
 
         protected void UpdateNextActions() {
+            InitNexts();
             foreach (var action in NextActions) {
                 action.Position = Position;
             }
