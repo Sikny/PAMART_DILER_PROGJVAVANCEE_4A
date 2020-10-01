@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerScoreCharacter : MonoBehaviour
 {
@@ -18,15 +15,14 @@ public class PlayerScoreCharacter : MonoBehaviour
         }
     }
 
+    public int Result() {
+        if (_hasWon) return 1;
+        return 0;
+    }
+
     public int Score
     {
         get => _score;
         set => _score = value;
-    }
-
-    public bool HasWon
-    {
-        get => _hasWon;
-        set => _hasWon = value;
     }
 }

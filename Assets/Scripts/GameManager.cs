@@ -41,10 +41,6 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 0f;
     }
 
-    /*public bool IsFinished() {
-        return _isFinished;
-    }*/
-
     public bool IsFinished
     {
         get => _isFinished;

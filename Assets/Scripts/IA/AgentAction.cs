@@ -1,14 +1,18 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 
-public abstract class AgentAction : MonoBehaviour {
-    private float proba;    // proba de selectionner l'action
+public abstract class AgentAction {
+    public List<AgentAction> nextPossibleActions = new List<AgentAction>() {
+        new ActionBottom(), new ActionInteract(), new ActionLeft(), new ActionRight(), new ActionTop()
+    };
+    private int _winCount;
+    private int _simulCount;
     public void AddSimulationResult(int numberVictory) {
-        
+        ++_simulCount;
+        _winCount += numberVictory;
     }
     
     public int GetSimulationResult() {
-        return 0;
+        return _winCount/_simulCount;
     }
 
     public abstract void DoAction();
@@ -33,6 +37,12 @@ public class ActionTop : AgentAction {
 }
 
 public class ActionBottom : AgentAction {
+    public override void DoAction() {
+        
+    }
+}
+
+public class ActionInteract : AgentAction {
     public override void DoAction() {
         
     }
