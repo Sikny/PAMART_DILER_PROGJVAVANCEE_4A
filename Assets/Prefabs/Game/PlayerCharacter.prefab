@@ -71,7 +71,9 @@ MonoBehaviour:
   speed: 7
   dashDistance: 4
   dashSpeed: 5
-  stadium: {fileID: 2162833528637486577, guid: 68ba4d61891587f43bd7e8d1b651ae2d, type: 3}
+  maxThrowForce: 30
+  forceDecrease: 10
+  minForce: 15
   offsetFrisbee: 0
   selfCollider: {fileID: 4093940730829087150}
   collisionMask:

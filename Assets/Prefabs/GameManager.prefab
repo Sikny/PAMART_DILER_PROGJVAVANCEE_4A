@@ -140,6 +140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4808028698481454444}
   - component: {fileID: 7913169922192701660}
+  - component: {fileID: 6290680688502636856}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -178,7 +179,42 @@ MonoBehaviour:
   - {fileID: 4261700638883636255, guid: 8a6c17708a6cf254d884dfa156aec41f, type: 3}
   - {fileID: 4261700638883636255, guid: 65dfb6a96b7c4d348a1d207cbf063e32, type: 3}
   timer: {fileID: 0}
+  isServing: 0
+  lPos: {fileID: 0}
+  rPos: {fileID: 0}
+  soundManager: {fileID: 6290680688502636856}
   endGameCanvas: {fileID: 5975530052671985489}
+--- !u!114 &6290680688502636856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2151688852022796625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5039af4cfadc5af40a131815d4801282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: MenuTheme
+    clip: {fileID: 8300000, guid: 193d8e77035639b4c87bea54921867f8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: PlayTheme
+    clip: {fileID: 8300000, guid: 900d78e7a24ac1748acbc454cf82e010, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: FinishTheme
+    clip: {fileID: 8300000, guid: 056ef1c89ee4d9148bde9bf79f8d18e7, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &3702186031132564618
 GameObject:
   m_ObjectHideFlags: 0

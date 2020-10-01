@@ -36,11 +36,7 @@ public class BaseMovement : MonoBehaviour {
     private void Update() {
         if (_frisbee)
         {
-            Debug.Log("Throw force is : " + _throwForce);
-            Debug.Log("decrease is : " + forceDecrease);
-            Debug.Log("minForce is : " + minForce);
-            //if(_throwForce > minForce)
-              //  _throwForce -= forceDecrease * Time.deltaTime;
+            if(_throwForce > minForce) _throwForce -= forceDecrease * Time.deltaTime;
             return;
             
         }
@@ -117,7 +113,7 @@ public class BaseMovement : MonoBehaviour {
         _frisbee = null;
         _throwForce = maxThrowForce;
         _lockMove = false;
-
+        GameManager.Instance.isServing = false;
     }
     public void LockMove() {
         _lockMove = true;
