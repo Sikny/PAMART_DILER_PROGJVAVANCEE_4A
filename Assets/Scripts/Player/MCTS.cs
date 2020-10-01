@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MCTS : MonoBehaviour {
-    private AgentAction CurrentNode;
+    private AgentActionsNode CurrentNode;
     
     private void ComputeMCTS() {
         int max = Int32.MinValue;
         AgentAction bestAction = null;
-        foreach(var possibleAction in CurrentNode.GetPossibleAction()) //Expansion
+        foreach(var possibleAction in CurrentNode.possibleActions) //Expansion
         {
             int numberVictory = SimulateResult(possibleAction); //Simulation (a faire plusieurs fois !)
             possibleAction.AddSimulationResult(numberVictory); //Retropropagation
@@ -28,6 +28,7 @@ public class MCTS : MonoBehaviour {
             //List<AgentAction> actions = Game.GetNextPossibleAction(possibleAction);
             //AgentAction selectedAction = Game.GetRandomAction(actions);
             //Game.PlayAction(selectedAction);
+            
         }
 
         return 0; //Game.Result(); //0 si perdu 1 si win*/

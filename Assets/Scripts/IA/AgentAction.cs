@@ -3,17 +3,12 @@ using UnityEngine;
 
 public abstract class AgentAction : MonoBehaviour {
     private float proba;    // proba de selectionner l'action
-    private List<AgentAction> _possibleActions;
     public void AddSimulationResult(int numberVictory) {
         
     }
     
     public int GetSimulationResult() {
         return 0;
-    }
-
-    public List<AgentAction> GetPossibleAction() {
-        return _possibleActions;
     }
 
     public abstract void DoAction();
