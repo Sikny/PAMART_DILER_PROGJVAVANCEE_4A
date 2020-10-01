@@ -21,21 +21,21 @@ public class Frisbee : MonoBehaviour
         Vector2 dest = pos;
         dest += _direction;
         
-        //transform.position = Vector2.MoveTowards(pos, dest, _force * Time.deltaTime);
-        transform.position = GetDestination(pos, _direction);
+        transform.position = Vector2.MoveTowards(pos, dest, _force * Time.deltaTime);
+        //transform.position = GetDestination(pos, _direction);
         if (Input.GetKeyDown(KeyCode.A)) {
             Move(new Vector2(1, 1), 15);
         }
      
     }
     
-    public Vector2 GetDestination(Vector2 position, Vector2 direction) {
+    /*public Vector2 GetDestination(Vector2 position, Vector2 direction) {
         Vector2 pos = position;
         float time = 1f / 60f;
         direction.y = 0;
         pos += direction.normalized * (time * _force);
         return pos;
-    }
+    }*/
 
     public void Move(Vector2 direction, float force) {
         _direction = direction.normalized;
