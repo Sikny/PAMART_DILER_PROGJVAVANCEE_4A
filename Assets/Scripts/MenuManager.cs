@@ -4,7 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public void OnPlayButton() {
+    public void OnPlayButton()
+    {
+        GameManager.Instance.isServing = false;
         SceneManager.LoadScene("Game");
     }
     

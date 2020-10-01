@@ -20,9 +20,9 @@ public class Goal : MonoBehaviour {
             
             _playerScore.AddPoint(scoreValue);
             Frisbee frisbee = other.gameObject.GetComponentInParent<Frisbee>();
-            BaseMovement character;
-            character = isLeftSide ? _gameManager.lPos : _gameManager.rPos;
+            var character = isLeftSide ? _gameManager.lPos : _gameManager.rPos;
             
+            frisbee.offsetToPlayer = character.offsetFrisbee;
             frisbee.SetPlayerPos(character.transform);
             frisbee.SetIsCaught(true);
             character.Frisbee = frisbee;
@@ -30,5 +30,6 @@ public class Goal : MonoBehaviour {
             _gameManager.isServing = true;
 
         }
+
     }
 }
