@@ -4,7 +4,7 @@ public class PlayerController : MonoBehaviour
 {
 
     public BaseMovement baseMovement;
-    private int _directionHeld;
+    private Vector2Int _directionHeld;
 
     private KeyCode _rightKey;
     private KeyCode _leftKey;
@@ -24,40 +24,33 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Lateral
-        if (Input.GetKey(_rightKey))
-        {
-            baseMovement.SetLateralMove(1);
+        if (Input.GetKey(_rightKey)) {
+            _directionHeld.x = 1;
         }
         else if(Input.GetKey(_leftKey)) {
-            baseMovement.SetLateralMove(-1);
+            _directionHeld.x = -1;
         }
         else {
-            baseMovement.SetLateralMove(0);
+            _directionHeld.x = 0;
         }
         
         // Vertical
         if (Input.GetKey(_upKey))
         {
-            baseMovement.SetVerticalMove(1);
-            _directionHeld = 1;
+            _directionHeld.y = 1;
         } else if (Input.GetKey(_downKey)) {
-            baseMovement.SetVerticalMove(-1);
-            _directionHeld = -1;
+            _directionHeld.y = -1;
         }
         else {
-            baseMovement.SetVerticalMove(0);
-            _directionHeld = 0;
+            _directionHeld.y = 0;
         }
+        
+        baseMovement.SetMove(_directionHeld);
         
         // Dash
         if (Input.GetKeyDown(_dashKey))
         {
-            if (!baseMovement.Frisbee)
-                baseMovement.Dash();
-            else
-            {
-                baseMovement.ThrowFrisbee(_directionHeld);
-            }
+            baseMovement.Interact(_directionHeld);
         }
 
     }

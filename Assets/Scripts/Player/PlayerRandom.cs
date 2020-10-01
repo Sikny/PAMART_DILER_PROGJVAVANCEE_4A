@@ -2,18 +2,14 @@
 
 public class PlayerRandom : MonoBehaviour {
     public BaseMovement baseMovement;
-    private int _directionHeld;
+    private Vector2Int _directionHeld;
 
     void Update() {
-        baseMovement.SetLateralMove(Random.Range(-1, 2));
-        _directionHeld = Random.Range(-1, 2);
-        baseMovement.SetVerticalMove(_directionHeld);
+        _directionHeld = new Vector2Int(Random.Range(-1, 2), Random.Range(-1, 2));
+        baseMovement.SetMove(_directionHeld);
 
-        int doDash = Random.Range(0, 2);
-        if (doDash == 1) {
-            if(!baseMovement.Frisbee)
-                baseMovement.Dash();
-            else baseMovement.ThrowFrisbee(_directionHeld);
-        }
+        int action = Random.Range(0, 2);
+        if(action == 1)
+            baseMovement.Interact(_directionHeld);
     }
 }

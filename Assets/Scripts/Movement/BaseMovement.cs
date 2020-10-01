@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BaseMovement : MonoBehaviour {
     public float speed = 1.0f;
@@ -48,53 +47,58 @@ public class BaseMovement : MonoBehaviour {
 
         // movement
         Vector2 pos = transform.position;
-        Vector2 dest = new Vector2(pos.x + 0.1f * _xAxis, pos.y + 0.1f * _yAxis);
-        transform.position = Vector2.MoveTowards(pos, dest, speed * Time.deltaTime);
         
-        if (Physics2D.OverlapCircle(transform.position, selfCollider.radius, collisionMask)) {
-            transform.position = pos;
-        }
+        transform.position = GetDestination(pos, new Vector2(_xAxis, _yAxis));
 
         _currentDashCooldown -= Time.deltaTime;
         if (_currentDashCooldown < 0) _currentDashCooldown = -1f;
     }
 
-    public void SetLateralMove(int direction) {
+    public Vector2 GetDestination(Vector2 position, Vector2 direction, bool isDash = false) {
+        Vector2 pos = position;
+        float time = 1f / 60f;
+        pos += direction.normalized * (time * (isDash ? dashDistance : speed));
+        if(Physics2D.OverlapCircle(pos, selfCollider.radius, collisionMask)) pos = position;
+        // TODO HANDLE DASH CLOSE TO WALLS
+        return pos;
+    }
+
+    public void SetMove(Vector2Int direction) {
+        _xAxis = _lockMove ? 0 : direction.x;
+        _yAxis = _lockMove ? 0 : direction.y;
+    }
+
+    /*public void SetLateralMove(int direction) {
         _xAxis = _lockMove ? 0 : direction;
     }
 
     public void SetVerticalMove(int direction) {
         _yAxis = _lockMove ? 0 : direction;
-    }
-
-
+    }*/
+    
     public Frisbee Frisbee
     {
         get => _frisbee;
         set => _frisbee = value;
     }
 
-   
-
     private Vector2 _dashDest;
 
     private float _dashCooldown = 0.2f;
     private float _currentDashCooldown;
-    public void Dash() {
+    public void Dash(Vector2 direction) {
         if (_isDashing) return;
         if (_currentDashCooldown > 0) return;
         _currentDashCooldown = _dashCooldown;
 
-        Vector2 position = transform.position;
-        var direction = new Vector2(_xAxis, _yAxis).normalized;
-        _dashDest = position + dashDistance * direction;
+        _dashDest = GetDestination(transform.position, direction, true);
         _isDashing = true;
     }
 
     private void DoDash() {
         var position = transform.position;
-        //Vector2 dest = new Vector2(position.x + _xAxisStartDash, position.y + _yAxisStartDash);
-        transform.position = Vector2.MoveTowards(position, _dashDest, speed * dashSpeed * Time.deltaTime);
+        
+        transform.position = Vector2.MoveTowards(position, _dashDest, dashSpeed * Time.deltaTime);
         
         if (Physics2D.OverlapCircle(transform.position, selfCollider.radius, collisionMask)) {
             transform.position = position;
@@ -117,5 +121,13 @@ public class BaseMovement : MonoBehaviour {
     }
     public void LockMove() {
         _lockMove = true;
+    }
+
+    public void Interact(Vector2Int directionHeld) {
+        if(!Frisbee)
+            Dash(directionHeld);
+        else {
+            ThrowFrisbee(directionHeld.y);
+        }
     }
 }
