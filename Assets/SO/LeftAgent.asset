@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc9798b6894b904aab475b5583d3366, type: 3}
   m_Name: LeftAgent
   m_EditorClassIdentifier: 
-  agentPrefab: {fileID: 4261700638883636255, guid: 8a6c17708a6cf254d884dfa156aec41f,
+  agentPrefab: {fileID: 3862744046010237649, guid: 67e6d0bfe560ec2449fed2a1f40bef59,
     type: 3}
   xFrisbeeOffset: 1
   right: 100
