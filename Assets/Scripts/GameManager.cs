@@ -31,9 +31,9 @@ public class GameManager : MonoBehaviour {
     private void Update() {
         if(timer) timer.UpdateTimer();
     }
-
-    public void EndGame()
-    {
+    
+    public void EndGame() {
+        if (_isFinished) return;
         _isFinished = true;
         soundManager.StopPlayingAllMusics();
         soundManager.Play("FinishTheme");
@@ -51,8 +51,8 @@ public class GameManager : MonoBehaviour {
     private bool _isFinished;
 
     public void OnMenuReturnButton() {
+        endGameCanvas.SetActive(false);
         SceneManager.LoadScene("Menu");
         Time.timeScale = 1f;
-        endGameCanvas.SetActive(false);
     }
 }
