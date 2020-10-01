@@ -97,6 +97,8 @@ namespace Movement {
         public void Dash(Vector2 direction) {
             if (_isDashing) return;
             if (_currentDashCooldown > 0) return;
+            
+            GameManager.Instance.soundManager.Play("Dash");
             _currentDashCooldown = _dashCooldown;
 
             _dashDest = GetDestination(transform.position, direction, true);
@@ -119,6 +121,8 @@ namespace Movement {
             _frisbee.SetIsCaught(false);
 
             float xDir = _frisbee.transform.position.x - transform.position.x > 0 ? 1 : -1;
+            GameManager.Instance.soundManager.Play("Throw");
+
             Vector2 direction = new Vector2(xDir, directionHeld);
         
             _frisbee.Move(direction,_throwForce);

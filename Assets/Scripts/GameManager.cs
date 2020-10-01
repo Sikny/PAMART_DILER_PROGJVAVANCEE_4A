@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using Movement;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour {
     private static GameManager _instance;
@@ -9,6 +12,7 @@ public class GameManager : MonoBehaviour {
 
     public List<GameObject> possibleAgents = new List<GameObject>();
 
+    public TextMeshProUGUI popUp;
     [HideInInspector] public Timer timer;
     [HideInInspector] public bool isServing;
     [HideInInspector] public BaseMovement lPos;
@@ -47,6 +51,22 @@ public class GameManager : MonoBehaviour {
         get => _isFinished;
         set => _isFinished = value;
     }
+
+    public void TogglePopUp()
+    {
+        popUp.gameObject.SetActive(true);
+        soundManager.Play("Goal");
+        StartCoroutine(DelayToggleOff(1.5f));
+    }
+    
+    
+    IEnumerator DelayToggleOff(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        
+        popUp.gameObject.SetActive(false);
+    }
+
 
     public GameObject endGameCanvas;
     private bool _isFinished;

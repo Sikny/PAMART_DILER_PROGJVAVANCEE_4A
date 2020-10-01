@@ -7,11 +7,13 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
-          <e p="Character.cs" t="Include" />
           <e p="Frisbee.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="GamePauser.cs" t="Include" />
           <e p="Goal.cs" t="Include" />
+          <e p="IA" t="Include">
+            <e p="AgentAction.cs" t="Include" />
+          </e>
           <e p="MenuManager.cs" t="Include" />
           <e p="Movement" t="Include">
             <e p="BaseMovement.cs" t="Include" />
@@ -19,11 +21,17 @@
           </e>
           <e p="Player" t="Include">
             <e p="PlayerController.cs" t="Include" />
+            <e p="PlayerMCTS.cs" t="Include" />
+            <e p="PlayerRandom.cs" t="Include" />
           </e>
-          <e p="PlayerAgent.cs" t="Include" />
           <e p="PlayerScore.cs" t="Include" />
-          <e p="RandomAgent.cs" t="Include" />
+          <e p="PlayerScoreCharacter.cs" t="Include" />
           <e p="SelectedAgent.cs" t="Include" />
+          <e p="SimulateScoreTime.cs" t="Include" />
+          <e p="Sound" t="Include">
+            <e p="Sound.cs" t="Include" />
+            <e p="SoundManager.cs" t="Include" />
+          </e>
           <e p="Stadium.cs" t="Include" />
           <e p="Timer.cs" t="Include" />
         </e>
