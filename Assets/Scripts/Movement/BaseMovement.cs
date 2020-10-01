@@ -54,6 +54,9 @@ public class BaseMovement : MonoBehaviour {
         if (Physics2D.OverlapCircle(transform.position, selfCollider.radius, collisionMask)) {
             transform.position = pos;
         }
+
+        _currentDashCooldown -= Time.deltaTime;
+        if (_currentDashCooldown < 0) _currentDashCooldown = -1f;
     }
 
     public void SetLateralMove(int direction) {
@@ -75,8 +78,12 @@ public class BaseMovement : MonoBehaviour {
 
     private Vector2 _dashDest;
 
+    private float _dashCooldown = 0.2f;
+    private float _currentDashCooldown;
     public void Dash() {
         if (_isDashing) return;
+        if (_currentDashCooldown > 0) return;
+        _currentDashCooldown = _dashCooldown;
 
         Vector2 position = transform.position;
         var direction = new Vector2(_xAxis, _yAxis).normalized;
