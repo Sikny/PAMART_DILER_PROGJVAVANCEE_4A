@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 
-public class AgentActionsNode : MonoBehaviour {
-    public List<AgentAction> possibleActions;
-    
-    
+namespace IA {
+    public class AgentActionsNode {
+        public AgentAction currentAction;
+        public List<AgentAction> possibleActions;
+    }
 }

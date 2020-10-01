@@ -1,49 +1,47 @@
-﻿using System.Collections.Generic;
+﻿using UnityEngine;
 
-public abstract class AgentAction {
-    public List<AgentAction> nextPossibleActions = new List<AgentAction>() {
-        new ActionBottom(), new ActionInteract(), new ActionLeft(), new ActionRight(), new ActionTop()
-    };
-    private int _winCount;
-    private int _simulCount;
-    public void AddSimulationResult(int numberVictory) {
-        ++_simulCount;
-        _winCount += numberVictory;
+namespace IA {
+    public abstract class AgentAction {
+        public BaseMovement BaseMovement;
+    
+        // proba
+        private int _winCount;
+        private int _simulCount;
+        
+        protected Vector2Int Direction;
+        public void AddSimulationResult(int numberVictory) {
+            ++_simulCount;
+            _winCount += numberVictory;
+        }
+    
+        public int GetSimulationResult() {
+            return _winCount/_simulCount;
+        }
+
+        public abstract void DoAction();
     }
     
-    public int GetSimulationResult() {
-        return _winCount/_simulCount;
+    public class ActionMove : AgentAction {
+
+        public ActionMove(Vector2Int dir) {
+            Direction = dir;
+        }
+    
+        public override void DoAction() {
+            BaseMovement.SetMove(Direction);
+        }
     }
 
-    public abstract void DoAction();
-}
-
-public class ActionLeft : AgentAction {
-    public override void DoAction() {
-        
+    // dash / throw
+    public class ActionInteract : AgentAction {
+        public override void DoAction() {
+            //BaseMovement.Interact(Random.Range(0, 2));
+        }
     }
-}
 
-public class ActionRight : AgentAction {
-    public override void DoAction() {
-        
-    }
-}
-
-public class ActionTop : AgentAction {
-    public override void DoAction() {
-        
-    }
-}
-
-public class ActionBottom : AgentAction {
-    public override void DoAction() {
-        
-    }
-}
-
-public class ActionInteract : AgentAction {
-    public override void DoAction() {
-        
+    public class ActionInteractBottom : AgentAction {
+        public override void DoAction() {
+            //BaseMovement.Interact(Random.Range(0, 2), Random.Range(-1, 2));
+        }
     }
 }
