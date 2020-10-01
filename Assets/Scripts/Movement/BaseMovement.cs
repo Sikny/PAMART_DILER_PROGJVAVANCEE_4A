@@ -36,11 +36,7 @@ public class BaseMovement : MonoBehaviour {
     private void Update() {
         if (_frisbee)
         {
-            Debug.Log("Throw force is : " + _throwForce);
-            Debug.Log("decrease is : " + forceDecrease);
-            Debug.Log("minForce is : " + minForce);
-            //if(_throwForce > minForce)
-              //  _throwForce -= forceDecrease * Time.deltaTime;
+            if(_throwForce > minForce) _throwForce -= forceDecrease * Time.deltaTime;
             return;
             
         }

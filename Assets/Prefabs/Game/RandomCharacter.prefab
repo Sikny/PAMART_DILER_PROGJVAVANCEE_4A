@@ -71,6 +71,9 @@ MonoBehaviour:
   speed: 7
   dashDistance: 4
   dashSpeed: 5
+  maxThrowForce: 30
+  forceDecrease: 10
+  minForce: 15
   offsetFrisbee: 0
   selfCollider: {fileID: 4093940730829087150}
   collisionMask:
