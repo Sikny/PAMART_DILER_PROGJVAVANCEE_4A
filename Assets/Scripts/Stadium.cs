@@ -24,17 +24,12 @@ public class Stadium : MonoBehaviour {
 
     private void Awake() {
         if (!GameManager.Instance) return;
-        _lPlayerScore = new PlayerScore(lScore);
-        _rPlayerScore = new PlayerScore(rScore);
+
+        GameManager.Instance.IsFinished = false;
+
         // left goal = add score for right player
         // right goal = add score for left player
-        foreach (var goal in lGoals) {
-            goal.Init(_rPlayerScore);
-        }
-        foreach (var goal in rGoals) {
-            goal.Init(_lPlayerScore);
-        }
-
+  
         GameObject player1 = Instantiate(rightAgent.agentPrefab, rSpawn.position, Quaternion.identity);
         PlayerController controller = player1.GetComponent<PlayerController>();
         if(controller != null) MapPlayer(rightAgent, controller);
@@ -48,6 +43,18 @@ public class Stadium : MonoBehaviour {
         if(controller != null) MapPlayer(leftAgent, controller);
         player2.GetComponent<BaseMovement>().offsetFrisbee = leftAgent.xFrisbeeOffset;
         
+        
+                
+        _rPlayerScore = new PlayerScore(rScore, player1.GetComponent<PlayerScoreCharacter>());
+        _lPlayerScore = new PlayerScore(lScore, player2.GetComponent<PlayerScoreCharacter>());
+        
+        foreach (var goal in lGoals) {
+            goal.Init(_rPlayerScore);
+        }
+        foreach (var goal in rGoals) {
+            goal.Init(_lPlayerScore);
+        }
+
         GameManager.Instance.soundManager.StopPlayingAllMusics();
         GameManager.Instance.soundManager.Play("PlayTheme");
     }

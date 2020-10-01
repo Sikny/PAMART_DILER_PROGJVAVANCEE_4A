@@ -32,13 +32,23 @@ public class GameManager : MonoBehaviour {
         if(timer) timer.UpdateTimer();
     }
 
-    public void EndGame() {
+    public void EndGame()
+    {
+        _isFinished = true;
+        soundManager.StopPlayingAllMusics();
+        soundManager.Play("FinishTheme");
         endGameCanvas.SetActive(true);
         Time.timeScale = 0f;
     }
 
-    public bool IsFinished() {
+    /*public bool IsFinished() {
         return _isFinished;
+    }*/
+
+    public bool IsFinished
+    {
+        get => _isFinished;
+        set => _isFinished = value;
     }
 
     public GameObject endGameCanvas;
