@@ -37,7 +37,13 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 0f;
     }
 
+    public bool IsFinished() {
+        return _isFinished;
+    }
+
     public GameObject endGameCanvas;
+    private bool _isFinished;
+
     public void OnMenuReturnButton() {
         SceneManager.LoadScene("Menu");
         Time.timeScale = 1f;
