@@ -41,7 +41,7 @@ namespace Player {
     
         // une simulation = 1 win | lose
         private int SimulateResult(AgentAction possibleAction) {
-            //return scoreCharacter.Result();
+            return scoreCharacter.Result();
             while(!GameManager.Instance.IsFinished) //Attention votre jeu doit être finit !
             {
                 List<AgentAction> actions = GetNextPossibleActions(possibleAction);
