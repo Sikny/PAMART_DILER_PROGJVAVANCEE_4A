@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace Movement {
     public class BaseMovement : MonoBehaviour {
+        public Animator animator;
+        
         public float speed = 1.0f;
         public float dashDistance = 5f;
         public float dashSpeed = 6f;
@@ -48,8 +51,10 @@ namespace Movement {
 
             // movement
             Vector2 pos = transform.position;
+            Vector2 dir = new Vector2(_xAxis, _yAxis).normalized;
         
-            transform.position = GetDestination(pos, new Vector2(_xAxis, _yAxis));
+            transform.position = GetDestination(pos, dir);
+            animator.transform.LookAt(pos + dir, animator.transform.up);
 
             _currentDashCooldown -= Time.deltaTime;
             if (_currentDashCooldown < 0) _currentDashCooldown = -1f;
@@ -67,6 +72,8 @@ namespace Movement {
         public void SetMove(Vector2Int direction) {
             _xAxis = _lockMove ? 0 : direction.x;
             _yAxis = _lockMove ? 0 : direction.y;
+            if (direction.magnitude > 0.001f) animator.SetBool("Running", true);
+            else animator.SetBool("Running", false);
         }
 
         /*public void SetLateralMove(int direction) {

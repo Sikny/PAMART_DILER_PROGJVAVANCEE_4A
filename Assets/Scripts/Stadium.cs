@@ -31,12 +31,12 @@ public class Stadium : MonoBehaviour {
         // left goal = add score for right player
         // right goal = add score for left player
   
-        GameObject player1 = Instantiate(rightAgent.agentPrefab, rSpawn.position, Quaternion.identity);
+        GameObject player1 = Instantiate(rightAgent.agentPrefab, rSpawn.position, Quaternion.Euler(0, 0, 90));
         PlayerController controller = player1.GetComponent<PlayerController>();
         if(controller != null) MapPlayer(rightAgent, controller);
         player1.GetComponent<BaseMovement>().offsetFrisbee = rightAgent.xFrisbeeOffset;
 
-        GameObject player2 = Instantiate(leftAgent.agentPrefab, lSpawn.position, Quaternion.identity);
+        GameObject player2 = Instantiate(leftAgent.agentPrefab, lSpawn.position, Quaternion.Euler(0, 0, -90));
 
         GameManager.Instance.rPos = player1.GetComponent<BaseMovement>();
         GameManager.Instance.lPos = player2.GetComponent<BaseMovement>();
