@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
     [HideInInspector] public bool isServing;
     [HideInInspector] public BaseMovement lPos;
     [HideInInspector] public BaseMovement rPos;
-
+    public SoundManager soundManager;
     private void Awake() {
         if (_instance != null) {
             Destroy(gameObject);
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour {
         }
 
         _instance = this;
-        
+        soundManager.Init();
         DontDestroyOnLoad(gameObject);
     }
 

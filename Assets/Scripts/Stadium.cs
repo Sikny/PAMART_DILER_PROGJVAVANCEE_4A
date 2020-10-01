@@ -47,6 +47,9 @@ public class Stadium : MonoBehaviour {
         controller = player2.GetComponent<PlayerController>();
         if(controller != null) MapPlayer(leftAgent, controller);
         player2.GetComponent<BaseMovement>().offsetFrisbee = leftAgent.xFrisbeeOffset;
+        
+        GameManager.Instance.soundManager.StopPlayingAllMusics();
+        GameManager.Instance.soundManager.Play("PlayTheme");
     }
 
     private void MapPlayer(SelectedAgent agent, PlayerController controller) {

@@ -260,6 +260,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6290680688502636856, guid: 9bba049863f9f024e97e16614076e145,
+        type: 3}
+      propertyPath: sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 193d8e77035639b4c87bea54921867f8, type: 3}
+    - target: {fileID: 6290680688502636856, guid: 9bba049863f9f024e97e16614076e145,
+        type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6290680688502636856, guid: 9bba049863f9f024e97e16614076e145,
+        type: 3}
+      propertyPath: sounds.Array.data[1].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6290680688502636856, guid: 9bba049863f9f024e97e16614076e145,
+        type: 3}
+      propertyPath: sounds.Array.data[1].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6290680688502636856, guid: 9bba049863f9f024e97e16614076e145,
+        type: 3}
+      propertyPath: sounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 900d78e7a24ac1748acbc454cf82e010, type: 3}
+    - target: {fileID: 6290680688502636856, guid: 9bba049863f9f024e97e16614076e145,
+        type: 3}
+      propertyPath: sounds.Array.data[1].name
+      value: GameTheme
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bba049863f9f024e97e16614076e145, type: 3}
 --- !u!1 &1438638352 stripped
