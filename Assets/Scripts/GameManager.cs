@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour {
     [HideInInspector] public BaseMovement lPos;
     [HideInInspector] public BaseMovement rPos;
     public SoundManager soundManager;
+
+    public OptionsManager optionsManager;
+    
     private void Awake() {
         if (_instance != null) {
             Destroy(gameObject);
@@ -32,9 +35,12 @@ public class GameManager : MonoBehaviour {
         soundManager.Init();
         DontDestroyOnLoad(gameObject);
     }
+    
+    
 
     private void Update() {
         if(timer) timer.UpdateTimer();
+        if(optionsManager) optionsManager.Init();
     }
     
     public void EndGame() {
