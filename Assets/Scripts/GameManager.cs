@@ -56,6 +56,10 @@ public class GameManager : MonoBehaviour {
     {
         popUp.gameObject.SetActive(true);
         soundManager.Play("Goal");
+        lPos.LockMove();
+        lPos.LockThrow();
+        rPos.LockMove();
+        rPos.LockThrow();
         StartCoroutine(DelayToggleOff(1.5f));
     }
     
@@ -63,7 +67,11 @@ public class GameManager : MonoBehaviour {
     IEnumerator DelayToggleOff(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        
+        lPos.UnlockThrow();
+        lPos.UnlockMove();
+
+        rPos.UnlockThrow();
+        rPos.UnlockMove();
         popUp.gameObject.SetActive(false);
     }
 
