@@ -1,5 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Movement {
     public class BaseMovement : MonoBehaviour {
@@ -17,10 +16,7 @@ namespace Movement {
         public LayerMask collisionMask;
     
         private bool _isDashing;
-
-        private bool _inDashCooldown;
-
- 
+        
         private int _xAxis;
         private int _yAxis;
 

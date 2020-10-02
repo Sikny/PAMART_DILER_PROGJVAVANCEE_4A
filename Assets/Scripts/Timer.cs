@@ -6,6 +6,8 @@ public class Timer : MonoBehaviour {
     public TextMeshProUGUI timerText;
     private float _time;
 
+    public float CurrentTime => _time;
+
     private void Awake() {
         if(GameManager.Instance)
             GameManager.Instance.timer = this;

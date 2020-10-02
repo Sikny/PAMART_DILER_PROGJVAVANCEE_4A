@@ -16,4 +16,8 @@ public class PlayerScore {
         _txtScore.text = _score.ToString();
       
     }
+
+    public int GetScore() {
+        return _playerScore.Score;
+    }
 }

@@ -1,17 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SimulateScoreTime
 {
     private int _lScore;
+
+    public int LScore {
+        get => _lScore;
+        set => _lScore = value;
+    }
+
+    public int RScore {
+        get => _rScore;
+        set => _rScore = value;
+    }
+
     private int _rScore;
     private float _timer;
 
     private int _goalPosX = 8;
     private Vector2 _lGoal = new Vector2(8, 2);
     private Vector2 _rGoal = new Vector2(-8, -2);
-    
+
+    public void Init(float time) {
+        _timer = time;
+    }
     
     public bool CheckInGoal(Vector2 posFrisbee)
     {
@@ -32,9 +44,7 @@ public class SimulateScoreTime
                 _rScore += 3;
             return true;
         }
-
         return false;
-
     }
     
     public float UpdateTimer()
@@ -43,4 +53,7 @@ public class SimulateScoreTime
         return _timer;
     }
 
+    public float GetTime() {
+        return _timer;
+    }
 }

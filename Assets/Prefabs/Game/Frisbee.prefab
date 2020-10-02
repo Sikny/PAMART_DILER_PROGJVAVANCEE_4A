@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offsetToPlayer: 1
+  circleCollider: {fileID: 1259022371180322170}
 --- !u!1001 &4813897037682223917
 PrefabInstance:
   m_ObjectHideFlags: 0

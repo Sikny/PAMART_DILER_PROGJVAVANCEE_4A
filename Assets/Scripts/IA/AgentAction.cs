@@ -1,74 +1,75 @@
-﻿using System.Collections.Generic;
-using Movement;
+﻿using Movement;
 using UnityEngine;
 
 namespace IA {
-    public abstract class AgentAction {
-        public List<AgentAction> NextActions;
+    public class AgentAction {
         public BaseMovement baseMovement;
+        public InteractorSimulated InteractorSimulated;
 
-        // player pos
-        public Vector2 Position;
-
-        public void InitNexts() {
-            NextActions = new List<AgentAction>();
-            for (int i = -1; i <= 1; i++) {
-                for (int j = -1; j <= 1; j++) {
-                    var toAdd = new ActionMove(new Vector2Int(i, j));
-                    toAdd.baseMovement = baseMovement;
-                    NextActions.Add(toAdd);
-                }
-            }
-            // TODO INTERACT
+        protected void Init(Vector2 position, Vector2Int dir, BaseMovement baseMvt, InteractorSimulated interactor) {
+            Position = position;
+            Direction = dir;
+            baseMovement = baseMvt;
+            InteractorSimulated = interactor;
+            InteractorSimulated.Position = position;
         }
         
+        // player pos
+        public Vector2 Position;
+        
         // proba
-        private int _winCount;
+        private float _winCount;
         private int _simulCount;
         
         protected Vector2Int Direction;
-        public void AddSimulationResult(int numberVictory) {
+        public void AddSimulationResult(float numberVictory) {
+            // todo
             ++_simulCount;
             _winCount += numberVictory;
         }
     
-        public int GetSimulationResult() {
+        public float GetSimulationResult() {
             return _winCount/_simulCount;
         }
 
-        public abstract void DoAction();
+        // Chosen, executed in runtime
+        public virtual void DoAction() {
+            
+        }
 
-        public abstract void PlayAction();
-
-        protected void UpdateNextActions() {
-            InitNexts();
-            foreach (var action in NextActions) {
-                action.Position = Position;
-            }
+        // Simulation only
+        public virtual void PlayAction() {
+            
         }
     }
     
     public class ActionMove : AgentAction {
 
-        public ActionMove(Vector2Int dir) {
-            
-            Direction = dir;
+        public ActionMove(Vector2 position, Vector2Int dir, BaseMovement baseMvt, InteractorSimulated interactor) {
+            Init(position, dir, baseMvt, interactor);
         }
     
         public override void DoAction() {
             baseMovement.SetMove(Direction);
         }
-
+        
         public override void PlayAction() {
             Position = baseMovement.GetDestination(Position, Direction);
-            UpdateNextActions();
         }
     }
 
     // dash / throw
-    /*public class ActionInteract : AgentAction {
-        public override void DoAction() {
-            //BaseMovement.Interact(Random.Range(0, 2));
+    public class ActionInteract : AgentAction {
+        public ActionInteract(Vector2 position, Vector2Int dir, BaseMovement baseMvt, InteractorSimulated interactor) {
+            Init(position, dir, baseMvt, interactor);
         }
-    }*/
+        
+        public override void DoAction() {
+            baseMovement.Interact(Direction);
+        }
+
+        public override void PlayAction() {
+            InteractorSimulated.Interact(Direction);
+        }
+    }
 }

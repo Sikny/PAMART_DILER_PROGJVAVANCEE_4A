@@ -1,21 +1,22 @@
-﻿using Movement;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class FrisbeeCatch : MonoBehaviour
-{
-    public BaseMovement baseMovement;
-    private void OnCollisionEnter2D(Collision2D other)
+namespace Movement {
+    public class FrisbeeCatch : MonoBehaviour
     {
-        if (GameManager.Instance.isServing)
-            return;
-        if (other.gameObject.layer == LayerMask.NameToLayer("Frisbee"))
+        public BaseMovement baseMovement;
+        private void OnCollisionEnter2D(Collision2D other)
         {
-            Frisbee frisbee = other.gameObject.GetComponent<Frisbee>();
-            frisbee.offsetToPlayer = baseMovement.offsetFrisbee;
-            frisbee.SetPlayerPos(baseMovement.transform);
-            frisbee.SetIsCaught(true);
-            baseMovement.Frisbee = frisbee;
-            baseMovement.LockMove();
+            if (GameManager.Instance.isServing)
+                return;
+            if (other.gameObject.layer == LayerMask.NameToLayer("Frisbee"))
+            {
+                Frisbee frisbee = other.gameObject.GetComponent<Frisbee>();
+                frisbee.offsetToPlayer = baseMovement.offsetFrisbee;
+                frisbee.SetPlayerPos(baseMovement.transform);
+                frisbee.SetIsCaught(true);
+                baseMovement.Frisbee = frisbee;
+                baseMovement.LockMove();
+            }
         }
     }
 }

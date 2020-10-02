@@ -9,7 +9,10 @@ public class Frisbee : MonoBehaviour
     private float _force;
     private bool _isCaught;
     private Transform _playerPosition;
-    
+    public CircleCollider2D circleCollider;
+    public Vector2 Direction => _direction;
+    public float Force => _force;
+
     private void Update() {
         if (_isCaught)
         {

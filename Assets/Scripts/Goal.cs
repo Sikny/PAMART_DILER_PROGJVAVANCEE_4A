@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Goal : MonoBehaviour {
     public int scoreValue;

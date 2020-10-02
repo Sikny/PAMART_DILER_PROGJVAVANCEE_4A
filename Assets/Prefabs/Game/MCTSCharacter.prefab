@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7b1d2bb8823874a90cb99693fe2e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreCharacter: {fileID: 475142621893214319}
   baseMvt: {fileID: 5313456104169122481}
+  handlerPrefab: {fileID: 1486130714652611763, guid: 163fc373089a1a74cb51a2d52c4739c2,
+    type: 3}
+  delayBetweenSimulations: 0.5
 --- !u!1001 &7552350327557868967
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24,7 +26,7 @@ PrefabInstance:
     - target: {fileID: 4261700638883636255, guid: 33893a4ca7178b0458646d3aecea3de5,
         type: 3}
       propertyPath: m_Name
-      value: MCTSCharacter 1
+      value: MCTSCharacter
       objectReference: {fileID: 0}
     - target: {fileID: 7900436371016274765, guid: 33893a4ca7178b0458646d3aecea3de5,
         type: 3}
@@ -99,17 +101,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f17df3d05b6b18845a8d84881b515a34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &475142621893214319 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7950926100621921736, guid: 33893a4ca7178b0458646d3aecea3de5,
-    type: 3}
-  m_PrefabInstance: {fileID: 7552350327557868967}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6047152037111703992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce7b365a7ceae81488c779871a75dfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
