@@ -29,7 +29,7 @@ namespace Movement {
         private bool _lockMove;
         private Frisbee _frisbee;
         private float _throwForce;
-
+        private bool _lockThrow;
 
         private void Start()
         {
@@ -72,18 +72,11 @@ namespace Movement {
         public void SetMove(Vector2Int direction) {
             _xAxis = _lockMove ? 0 : direction.x;
             _yAxis = _lockMove ? 0 : direction.y;
-            if (direction.magnitude > 0.001f) animator.SetBool("Running", true);
+            if (direction.magnitude > 0.001f && !_lockMove) animator.SetBool("Running", true);
             else animator.SetBool("Running", false);
         }
-
-        /*public void SetLateralMove(int direction) {
-        _xAxis = _lockMove ? 0 : direction;
-    }
-
-    public void SetVerticalMove(int direction) {
-        _yAxis = _lockMove ? 0 : direction;
-    }*/
-    
+        
+  
         public Frisbee Frisbee
         {
             get => _frisbee;
@@ -95,8 +88,10 @@ namespace Movement {
         private float _dashCooldown = 0.2f;
         private float _currentDashCooldown;
         public void Dash(Vector2 direction) {
-            if (_isDashing) return;
+            if (_isDashing || _lockMove) return;
             if (_currentDashCooldown > 0) return;
+            
+            GameManager.Instance.soundManager.Play("Dash");
             _currentDashCooldown = _dashCooldown;
 
             _dashDest = GetDestination(transform.position, direction, true);
@@ -116,9 +111,12 @@ namespace Movement {
 
         public void ThrowFrisbee(int directionHeld) //1 = up, -1 = down, 0 = neutral
         {
+            if (_lockThrow) return;
             _frisbee.SetIsCaught(false);
 
             float xDir = _frisbee.transform.position.x - transform.position.x > 0 ? 1 : -1;
+            GameManager.Instance.soundManager.Play("Throw");
+
             Vector2 direction = new Vector2(xDir, directionHeld);
         
             _frisbee.Move(direction,_throwForce);
@@ -129,8 +127,18 @@ namespace Movement {
         }
         public void LockMove() {
             _lockMove = true;
+        }    
+        
+        public void UnlockMove() {
+            _lockMove = false;
         }
-
+        public void LockThrow() {
+            _lockThrow = true;
+        }
+        
+        public void UnlockThrow() {
+            _lockThrow = false;
+        }
         public void Interact(Vector2Int directionHeld) {
             if(!Frisbee)
                 Dash(directionHeld);

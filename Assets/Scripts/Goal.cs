@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class Goal : MonoBehaviour {
@@ -19,9 +20,10 @@ public class Goal : MonoBehaviour {
         if (other.gameObject.layer == LayerMask.NameToLayer("Frisbee")) {
             
             _playerScore.AddPoint(scoreValue);
+            _gameManager.TogglePopUp();
             Frisbee frisbee = other.gameObject.GetComponentInParent<Frisbee>();
             var character = isLeftSide ? _gameManager.lPos : _gameManager.rPos;
-            
+
             frisbee.offsetToPlayer = character.offsetFrisbee;
             frisbee.SetPlayerPos(character.transform);
             frisbee.SetIsCaught(true);
@@ -32,4 +34,7 @@ public class Goal : MonoBehaviour {
         }
 
     }
+    
+
+
 }

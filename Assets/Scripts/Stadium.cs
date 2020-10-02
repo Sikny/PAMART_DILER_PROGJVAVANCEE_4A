@@ -28,8 +28,6 @@ public class Stadium : MonoBehaviour {
 
         GameManager.Instance.IsFinished = false;
 
-        // left goal = add score for right player
-        // right goal = add score for left player
   
         GameObject player1 = Instantiate(rightAgent.agentPrefab, rSpawn.position, Quaternion.Euler(0, 0, 90));
         PlayerController controller = player1.GetComponent<PlayerController>();
