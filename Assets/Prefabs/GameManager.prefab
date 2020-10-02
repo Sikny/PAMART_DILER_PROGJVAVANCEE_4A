@@ -314,6 +314,7 @@ MonoBehaviour:
   - {fileID: 9006966605625413295, guid: d5d568dc953615b40a451f1c808bf635, type: 3}
   - {fileID: 6047152037111703992, guid: 9f3fa5eb754b46a40917b1f21cfa7d0a, type: 3}
   popUp: {fileID: 4125819811388990954}
+  endMessage: {fileID: 3156638936608986663}
   timer: {fileID: 0}
   isServing: 0
   lPos: {fileID: 0}

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
     public List<GameObject> possibleAgents = new List<GameObject>();
 
     public TextMeshProUGUI popUp;
+    public TextMeshProUGUI endMessage;
     [HideInInspector] public Timer timer;
     [HideInInspector] public bool isServing;
     [HideInInspector] public BaseMovement lPos;
@@ -40,6 +41,10 @@ public class GameManager : MonoBehaviour {
     public void EndGame() {
         if (_isFinished) return;
         _isFinished = true;
+        if(lPos.GetComponent<PlayerScoreCharacter>().Result() == 1)
+            endMessage.SetText("Player 1 win!");
+        else 
+            endMessage.SetText("Player 2 win!");
         soundManager.StopPlayingAllMusics();
         soundManager.Play("FinishTheme");
         endGameCanvas.SetActive(true);
